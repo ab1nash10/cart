@@ -7,13 +7,24 @@ class CartItem extends React.Component{
         this.state ={
             price: 1099,
             title : 'Mobile Phone',
-            qty : 10,
+            qty : 1,
             img : ''
         }
         // this.increaseQuantity = this.increaseQuantity.bind(this)
     }
     increaseQuantity =() =>{
+        // this.state.qty += 1;
         console.log('this',this.state);
+        //setState form 1
+        // this.setState({
+        //     qty: this.state.qty +1
+        // });
+        //setState form 2 - if previous state is required then we use this else we use the state 1
+        this.setState(( prevState ) => {
+            return {
+                qty: prevState.qty+1
+            }
+        });
     }
     render() {
         const { price , title, qty}= this.state;
@@ -26,7 +37,7 @@ class CartItem extends React.Component{
          <div className="right-block">
             <div style={{fontSize : 25,fontFamily: 'cursive'}}><b>{title}</b></div>
             <div style={{color : 'grey'}}>Rs { price}/-</div>
-            <div style={{color : 'grey'}}>{qty}</div>
+            <div style={{color : 'grey'}}>Qty: {qty}</div>
           
             <div className="cart-item-actions">
                 {/* buttons */}
