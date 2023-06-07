@@ -1,6 +1,6 @@
 import React from "react";
 
-class CartItem extends React.Component{
+const CartItem= (props) =>{
     
     // increaseQuantity =() =>{
     //     // this.state.qty += 1;
@@ -35,15 +35,15 @@ class CartItem extends React.Component{
 
 
     
-    render() {
-        console.log('this.props',this.props);
-        const { price , title, qty}= this.props.product;
-        const {product , onIncreaseQunatity , onDecreaseQunatity, onDeleteProduct}=this.props;
+  
+       
+        const { price , title, qty}= props.product;
+        const {product , onIncreaseQunatity , onDecreaseQunatity, onDeleteProduct}=props;
 
         return(
          <div className ="cart-item">
          <div className="left-block">
-            <img style={styles.image}/>
+            <img style={styles.image} src={product.img}/>
          </div>
          <div className="right-block">
             <div style={{fontSize : 25,fontFamily: 'cursive'}}><b>{title}</b></div>
@@ -59,7 +59,7 @@ class CartItem extends React.Component{
                 </div> </div></div>
         );
     }
-}
+
 
 const styles ={
     image:{
